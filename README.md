@@ -6,6 +6,7 @@ It is based on [jbanaszczyk/Pms5003](https://github.com/jbanaszczyk/Pms5003) lib
 ## Features
 
 * Supports all Plantover Pmsx003 features (sleep/wake up, passive/active modes), based on PMS5003,
+* supports ESP8266 and ESP32 based boards
 * Probably works fine with PMS7003(tested) and PMS3003(not tested),
 * Highly customizable:
   * Uses any serial communication library,
@@ -37,7 +38,15 @@ Use the code: https://github.com/riverscn/pmsx003/tree/master/examples/Simple01
 
 #include <pms.h>
 
-Pmsx003 pms(D3, D4);
+// if using ESP8266 board
+#define PMSx003_RX_PIN D6 // should match the label printed on your board
+#define PMSx003_TX_PIN D5 // should match the label printed on your board
+
+//if using ESP32 board, use number value as aliases are not defined for the board
+#define PMSx003_RX_PIN 12 // if connected to D12 of your board (aka GPIO12)
+#define PMSx003_TX_PIN 13 // if connected to D13 of your board (aka GPIO13)
+
+Pmsx003 pms(PMSx003_TX_PIN, PMSx003_RX_PIN);
 
 ////////////////////////////////////////
 

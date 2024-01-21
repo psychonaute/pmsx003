@@ -28,7 +28,9 @@ private:
 
 #if defined PMS_SOFTSERIAL
 	SoftwareSerial* _pmsSerial;
-#endif  
+#elif defined PMS_HARDSERIAL
+	HardwareSerial* _pmsSerial;
+#endif
 
 public:
 	enum PmsStatus : uint8_t {

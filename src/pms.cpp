@@ -60,7 +60,12 @@ Pmsx003::Pmsx003(int8_t swsRX, int8_t swsTX) : passive(tribool(unknown)), sleep(
 #if defined PMS_DYNAMIC
 	begin();
 #endif
+#if defined PMS_SOFTSERIAL
 	this->_pmsSerial = new SoftwareSerial(swsRX, swsTX);
+#elif defined PMS_HARDSERIAL
+	this->_pmsSerial = &Serial2;
+	this->_pmsSerial->begin(9600, SERIAL_8N1, swsRX, swsTX);
+#endif
 };
 
 Pmsx003::~Pmsx003() {

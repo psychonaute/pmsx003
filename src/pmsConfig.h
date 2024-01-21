@@ -3,11 +3,15 @@
 
 ////////////////////////////////////////////
 
-// Use one of: 
+// Use one of:
 // it depends on Serial Library (and serial pin connection)
 
-#if not defined(PMS_SOFTSERIAL)
-#define PMS_SOFTSERIAL
+#if defined(ESP32)
+  #define PMS_HARDSERIAL
+#elif defined(ESP8266)
+  #define PMS_SOFTSERIAL
+#else
+  #define PMS_SOFTSERIAL
 #endif
 
 ////////////////////////////////////////////
@@ -33,8 +37,12 @@
 
 ////////////////////////////////////////////
 
-#if defined PMS_SOFTSERIAL
-#include <SoftwareSerial.h>
+#if defined(PMS_SOFTSERIAL)
+  #include <SoftwareSerial.h>
+#elif defined(PMS_HARDSERIAL)
+  #include <HardwareSerial.h>
+#else
+  #include <SoftwareSerial.h>
 #endif
 
 ////////////////////////////////////////////
