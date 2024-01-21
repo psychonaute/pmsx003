@@ -3,17 +3,21 @@
 
 ////////////////////////////////////////////
 
-// Use one of: 
+// Use one of:
 // it depends on Serial Library (and serial pin connection)
 
-#if not defined(PMS_SOFTSERIAL)
-#define PMS_SOFTSERIAL
+#if defined(ESP32)
+  #define PMS_HARDSERIAL
+#elif defined(ESP8266)
+  #define PMS_SOFTSERIAL
+#else
+  #define PMS_SOFTSERIAL
 #endif
 
 ////////////////////////////////////////////
 
 // Use PMS_DYNAMIC to be C++ strict
-// Without PMS_DYNAMIC: 
+// Without PMS_DYNAMIC:
 //   con: Pmsx003 related object should be defined as global variable (C style): Pmsx003 pms;
 //   con: It can not be initialized inside constructor. It is too early, serial ports and other pins will be redefined by Arduino bootloader
 //   con: It has to be initialzed within setup() - see examples: uses of begin()
@@ -33,8 +37,12 @@
 
 ////////////////////////////////////////////
 
-#if defined PMS_SOFTSERIAL
-#include <SoftwareSerial.h>
+#if defined(PMS_SOFTSERIAL)
+  #include <SoftwareSerial.h>
+#elif defined(PMS_HARDSERIAL)
+  #include <HardwareSerial.h>
+#else
+  #include <SoftwareSerial.h>
 #endif
 
 ////////////////////////////////////////////

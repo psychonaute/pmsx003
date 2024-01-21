@@ -11,7 +11,7 @@
 // Pin 2: GND
 
 // Using SoftSerial:
-//   Pin 4: int8_t swsTX 
+//   Pin 4: int8_t swsTX
 //   Pin 5: int8_t swsRX
 
 class Pmsx003 {
@@ -28,7 +28,9 @@ private:
 
 #if defined PMS_SOFTSERIAL
 	SoftwareSerial* _pmsSerial;
-#endif  
+#elif defined PMS_HARDSERIAL
+	HardwareSerial* _pmsSerial;
+#endif
 
 public:
 	enum PmsStatus : uint8_t {
