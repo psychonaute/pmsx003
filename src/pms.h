@@ -11,7 +11,7 @@
 // Pin 2: GND
 
 // Using SoftSerial:
-//   Pin 4: int8_t swsTX 
+//   Pin 4: int8_t swsTX
 //   Pin 5: int8_t swsRX
 
 class Pmsx003 {

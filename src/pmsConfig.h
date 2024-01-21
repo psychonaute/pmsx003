@@ -17,7 +17,7 @@
 ////////////////////////////////////////////
 
 // Use PMS_DYNAMIC to be C++ strict
-// Without PMS_DYNAMIC: 
+// Without PMS_DYNAMIC:
 //   con: Pmsx003 related object should be defined as global variable (C style): Pmsx003 pms;
 //   con: It can not be initialized inside constructor. It is too early, serial ports and other pins will be redefined by Arduino bootloader
 //   con: It has to be initialzed within setup() - see examples: uses of begin()
